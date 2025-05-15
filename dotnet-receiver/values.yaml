@@ -1,0 +1,17 @@
+nameOverride: ""
+fullnameOverride: ""
+
+image:
+  repository: messagereceiver
+  pullPolicy: IfNotPresent
+  tag: ""
+
+service:
+  type: NodePort
+  port: 80
+  nodePort: 30012
+
+containerPort: 80
+
+appLabel: message-receiver
+replicaCount: 1

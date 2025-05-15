@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "vP8UYeF4wooS5tV4sEiGNVsqiHmLCRpZ5AdtaBY2DVg=",
+  "Source": "MessageSender",
+  "BasePath": "_content/MessageSender",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

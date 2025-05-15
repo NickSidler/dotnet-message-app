@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: message-receiver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: message-receiver
+  template:
+    metadata:
+      labels:
+        app: message-receiver
+    spec:
+      containers:
+        - name: receiver
+          image: messagereceiver:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
