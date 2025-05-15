@@ -1,0 +1,14 @@
+replicaCount: 1
+
+image:
+  repository: message-sender
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+service:
+  type: NodePort
+  port: 80
+  targetPort: 80
+  nodePort: 30013
+
+resources: {}
