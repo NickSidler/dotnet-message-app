@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: receiver
-          image: messagereceiver:latest
+          image: dotnetacrnick.azurecr.io/dotnet-receiver:latest
           imagePullPolicy: Never
           ports:
             - containerPort: 80

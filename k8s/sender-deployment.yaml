@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: sender
-          image: messagesender:latest
+          image: dotnetacrnick.azurecr.io/dotnet-sender:latest
           imagePullPolicy: Never
           ports:
             - containerPort: 80
