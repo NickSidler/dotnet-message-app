@@ -1,0 +1,26 @@
+name: Build and Push Receiver Image to ACR
+
+on:
+  push:
+    branches: [ main ]
+    paths: [ "receiver/**" ]
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Build and Push Docker image
+        run: |
+          IMAGE=${{ secrets.ACR_NAME }}.azurecr.io/dotnet-receiver:latest
+          docker build -t $IMAGE ./receiver
+          az acr login --name ${{ secrets.ACR_NAME }}
+          docker push $IMAGE
