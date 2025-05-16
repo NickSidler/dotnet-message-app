@@ -1,0 +1,4 @@
+image:
+  repository: dotnetacrnick.azurecr.io/dotnet-receiver
+  tag: latest
+  pullPolicy: IfNotPresent
