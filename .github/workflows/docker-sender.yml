@@ -3,7 +3,7 @@ name: Build and Push Sender Image to ACR
 on:
   push:
     branches: [ main ]
-    paths: [ "sender/**" ]
+    paths: [ "MessageSender/**" ]
 
 jobs:
   build-and-push:
@@ -21,6 +21,6 @@ jobs:
       - name: Build and Push Docker image
         run: |
           IMAGE=${{ secrets.ACR_NAME }}.azurecr.io/dotnet-sender:latest
-          docker build -t $IMAGE ./sender
+          docker build -t $IMAGE ./MessageSender
           az acr login --name ${{ secrets.ACR_NAME }}
           docker push $IMAGE
