@@ -22,4 +22,4 @@ app.UseEndpoints(endpoints =>
 });
 
 app.Run();
-// Test GitHub Action for Sender
+// Neuer Build-Test 2025-05-16
