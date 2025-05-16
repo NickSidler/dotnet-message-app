@@ -1,20 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: message-sender
+  name: sender
+  namespace: default
+  labels:
+    app: sender
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: dotnetacrnick.azurecr.io/dotnet-sender
+    argocd-image-updater.argoproj.io/dotnet-sender.update-strategy: latest
+    argocd-image-updater.argoproj.io/dotnet-sender.pull-secret: pullsecret:argocd/acr-creds
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: message-sender
+      app: sender
   template:
     metadata:
       labels:
-        app: message-sender
+        app: sender
     spec:
       containers:
         - name: sender
           image: dotnetacrnick.azurecr.io/dotnet-sender:latest
-          imagePullPolicy: Never
           ports:
             - containerPort: 80

@@ -1,20 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: message-receiver
+  name: receiver
+  namespace: default
+  labels:
+    app: receiver
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: dotnetacrnick.azurecr.io/dotnet-receiver
+    argocd-image-updater.argoproj.io/dotnet-receiver.update-strategy: latest
+    argocd-image-updater.argoproj.io/dotnet-receiver.pull-secret: pullsecret:argocd/acr-creds
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: message-receiver
+      app: receiver
   template:
     metadata:
       labels:
-        app: message-receiver
+        app: receiver
     spec:
       containers:
         - name: receiver
           image: dotnetacrnick.azurecr.io/dotnet-receiver:latest
-          imagePullPolicy: Never
           ports:
             - containerPort: 80
