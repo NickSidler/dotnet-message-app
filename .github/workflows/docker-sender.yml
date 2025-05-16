@@ -20,7 +20,12 @@ jobs:
 
       - name: Build and Push Docker image
         run: |
-          IMAGE=${{ secrets.ACR_NAME }}.azurecr.io/dotnet-sender:latest
+          TAG=$(date -u +'%Y%m%d-%H%M%S')
+          IMAGE=${{ secrets.ACR_NAME }}.azurecr.io/dotnet-sender:$TAG
           docker build -t $IMAGE ./MessageSender
           az acr login --name ${{ secrets.ACR_NAME }}
           docker push $IMAGE
+          echo "SENDER_IMAGE_TAG=$TAG" >> $GITHUB_ENV
+      - name: Helm Deploy Sender
+        run: |
+          helm upgrade --install sender ./helm/sender --namespace default --set image.tag=$SENDER_IMAGE_TAG
