@@ -22,3 +22,4 @@ app.UseEndpoints(endpoints =>
 });
 
 app.Run();
+// Test GitHub Actions Trigger from MessageReceiver
