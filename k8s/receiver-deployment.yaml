@@ -21,6 +21,6 @@ spec:
     spec:
       containers:
         - name: receiver
-          image: dotnetacrnick.azurecr.io/dotnet-receiver:latest
+          image: dotnetacrnick.azurecr.io/dotnet-sender:{{ .Values.image.tag }}
           ports:
             - containerPort: 80
