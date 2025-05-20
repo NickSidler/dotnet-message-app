@@ -14,7 +14,7 @@ namespace MessageSender.Controllers
         {
             using var client = new HttpClient();
 
-            // Kubernetes-Service-Name des Empfängers
+            // Kubernetes-Service-Name des Empfänger
             var response = await client.PostAsync(
                 "http://message-receiver-service/message",
                 new StringContent($"\"{msg}\"", Encoding.UTF8, "application/json")

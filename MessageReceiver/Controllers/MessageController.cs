@@ -22,4 +22,3 @@ namespace MessageReceiver.Controllers
         }
     }
 }
-//Test
