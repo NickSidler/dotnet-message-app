@@ -15,7 +15,4 @@ Write-Host "Receiver Tag: $receiverTag"
 # 3. Helm Upgrade / Install für Sender mit dem neuesten Tag
 helm upgrade --install sender ./helm/sender --namespace $namespace --set image.tag=$senderTag
 
-# 4. Helm Upgrade / Install für Receiver mit dem neuesten Tag
-helm upgrade --install receiver ./helm/receiver --namespace $namespace --set image.tag=$receiverTag
-
 Write-Host "Deployment abgeschlossen."
